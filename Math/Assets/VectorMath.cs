@@ -5,6 +5,8 @@ using UnityEngine;
 public class VectorMath : MonoBehaviour {
 	public Vector3 startPoint = new Vector3 (0, 0, 0); //this is a constructor!
 	public Vector3 vec1 = new Vector3 (10, 0, 0);
+	public Vector3 vec2 = new Vector3 (0, 0, 10);
+	public Vector3 inAngle;
 	// Use this for initialization
 	void Start () {
 		
@@ -18,7 +20,17 @@ public class VectorMath : MonoBehaviour {
 
 		Debug.Log ("Dot :"+Vector3.Dot (Vector3.right, Vector3.down));
 
-		Debug.Log ("Facing :" + transform.forward);
+		//Debug.Log ("Facing :" + transform.forward);
 		//if (Vector3.Dot(transform.forward, dir, Color.cyan);
+
+		//Cross product
+		Debug.DrawRay(startPoint, vec1, Color.white);
+		Debug.DrawRay (startPoint, vec2, Color.white);
+		Vector3 cross = Vector3.Cross (vec1, vec2);
+		Debug.DrawRay (startPoint, cross, Color.yellow);
+
+		Debug.DrawRay (startPoint, inAngle, Color.red);
+		Vector3 reflection = Vector3.Reflect (inAngle, -cross);
+		Debug.DrawRay (startPoint, reflection, Color.blue);
 	}
 }
